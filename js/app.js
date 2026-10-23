@@ -115,7 +115,7 @@ async function loadUser(username) {
     renderLanguages(stats.languages);
     renderTopRepos(repos);
     renderRepoTable(repos);
-    if (combinedWeeks) renderHeatmap(combinedWeeks);
+    renderHeatmap(combinedWeeks);
 
     dashboard.style.display = 'flex';
     dashboard.style.flexDirection = 'column';
@@ -262,7 +262,20 @@ function renderTopRepos(repos) {
 
 /* ── Render heatmap ──────────────────────────────────────────── */
 function renderHeatmap(weeklyData) {
-  Charts.drawHeatmap($('heatmap'), weeklyData);
+  const hasActivity = Array.isArray(weeklyData) && weeklyData.length > 0;
+  const heatmap = $('heatmap');
+  const legend = $('heatmapLegend');
+
+  heatmap.classList.toggle('heatmap--empty', !hasActivity);
+  legend.hidden = !hasActivity;
+
+  if (!hasActivity) {
+    heatmap.textContent = 'Commit activity isn\'t available for this profile right now.';
+    $('heatmapSub').textContent = 'Activity unavailable';
+    return;
+  }
+
+  Charts.drawHeatmap(heatmap, weeklyData);
   const total = weeklyData.reduce((s, w) => s + w.days.reduce((a, b) => a + b, 0), 0);
   $('heatmapSub').textContent = `${total.toLocaleString()} commits · last 52 weeks`;
 }

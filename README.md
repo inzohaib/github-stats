@@ -12,7 +12,7 @@ Enter a GitHub username to see profile details, repository totals, language dist
 - Public repository count, total stars, forks, followers, and watchers
 - Language distribution based on repository size
 - Top repositories ranked by stars
-- A 52-week commit activity heatmap from the most-starred repositories
+- A 52-week commit activity heatmap from the most-starred repositories (or a clear message when activity data is unavailable)
 - Repository filtering and sorting by stars, forks, last update, or name
 - Shareable profile URLs such as `?user=torvalds`
 - Current unauthenticated GitHub API rate-limit status
