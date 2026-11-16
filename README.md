@@ -1,73 +1,54 @@
-# GitHub Stats & Calc
+# GitHub Stats
 
-A collection of small, dependency-free web projects built with HTML, CSS and vanilla JavaScript.
+A small, dependency-free dashboard for exploring a GitHub profile through the public GitHub API.
 
-## Projects
+**Live demo:** [sshnox.github.io/github-stats](https://sshnox.github.io/github-stats/)
 
-### DevScope — GitHub Profile Analytics
+Enter a GitHub username to see profile details, repository totals, language distribution, top repositories, recent commit activity, and a searchable repository table.
 
-Explore a GitHub profile with repository stats, language distribution, top repositories, a commit activity heatmap and searchable repository table.
+## What it shows
 
-**[Open DevScope](https://inzohaib.github.io/github-stats/)**
+- Profile name, avatar, bio, location, company, and website
+- Public repository count, total stars, forks, followers, and watchers
+- Language distribution based on repository size
+- Top repositories ranked by stars
+- A 52-week commit activity heatmap from the most-starred repositories
+- Repository filtering and sorting by stars, forks, last update, or name
+- Shareable profile URLs such as `?user=torvalds`
+- Current unauthenticated GitHub API rate-limit status
 
-### Calc — Browser Calculator
+## Run it locally
 
-A responsive everyday calculator with live previews, keyboard support, percentages and a recent-calculations panel.
-
-**[Open Calc](https://inzohaib.github.io/github-stats/calculator/)** · [Calculator README](calculator/README.md)
-
-## Calculator features
-
-- Addition, subtraction, multiplication and division
-- Percentage and positive/negative toggle
-- Decimal input, clear-all and delete-last controls
-- Live result preview and recent calculation history
-- Keyboard shortcuts for fast input
-- Responsive layout, accessible controls and reduced-motion support
-- Safe arithmetic parser with no `eval()` or third-party dependencies
-
-## Tech stack
-
-- **HTML5** — semantic structure
-- **CSS3** — responsive layouts and visual design
-- **Vanilla JavaScript** — application logic and interactions
-- **GitHub Pages** — static hosting and deployment
-
-No package manager, framework or build step is required.
-
-## Run locally
+No build step or package manager is required.
 
 ```bash
-git clone https://github.com/inzohaib/github-stats.git
+git clone https://github.com/sshnox/github-stats.git
 cd github-stats
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000> for DevScope or <http://localhost:8000/calculator/> for Calc.
+Open <http://localhost:8000> in your browser. Opening `index.html` directly also works, although a local HTTP server avoids browser restrictions around local files.
+
+## GitHub API limits
+
+The app uses GitHub's unauthenticated public API, which is limited to 60 requests per hour per IP address. A profile load can make several requests because repository and commit activity data are fetched separately.
+
+The app does not ask for, store, or require a personal access token. If you fork the project and add authenticated requests, keep credentials on a server or local development environment and never commit them to the repository.
 
 ## Project structure
 
 ```text
-.
-├── calculator/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   └── README.md
-├── css/
-├── js/
-├── index.html
-└── README.md
+index.html       App shell and accessible markup
+css/style.css    Layout, theme, and responsive styles
+js/api.js        GitHub API wrapper
+js/charts.js     Language donut and commit heatmap rendering
+js/app.js        Application state and UI rendering
 ```
 
-## About
+## Contributing
 
-I built these projects to learn by making useful things with the fundamentals of web development. I enjoy experimenting with ideas, keeping the code lightweight, and improving the details that make small tools feel good to use.
-
-## Deployment
-
-The repository includes a GitHub Actions workflow that publishes the site to GitHub Pages whenever changes are pushed to `main`.
+Bug reports, focused improvements, and documentation fixes are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an issue or pull request.
 
 ## License
 
-MIT — see [LICENSE](LICENSE) if included in this repository.
+MIT © Shoaib Shah
