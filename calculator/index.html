@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="A clean, keyboard-friendly browser calculator built with HTML, CSS and vanilla JavaScript.">
+  <title>Calc — A little everyday calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Calc home"><span class="brand-mark">c</span><span>calc<span class="brand-dot">.</span></span></a>
+      <span class="top-note">A LITTLE TOOL FOR EVERYDAY MATH</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">SIMPLE. QUICK. FOCUSED.</p>
+      <h1 id="page-title">Math, without<br><span>the extra noise.</span></h1>
+      <p class="intro-copy">A lightweight calculator that does the everyday stuff, right in your browser.</p>
+    </section>
+
+    <section class="calculator" aria-label="Calculator">
+      <div class="calc-head">
+        <span class="calc-label"><span class="live-dot"></span> STANDARD CALCULATOR</span>
+        <button class="icon-btn" id="historyToggle" type="button" aria-expanded="false" aria-controls="historyPanel" title="Toggle history">↶</button>
+      </div>
+      <div class="display" aria-live="polite" aria-atomic="true">
+        <div class="expression" id="expression" aria-label="Expression">0</div>
+        <div class="result" id="result">0</div>
+      </div>
+      <div class="keypad" id="keypad">
+        <button class="key key-soft" data-action="clear" type="button">AC</button>
+        <button class="key key-soft" data-action="sign" type="button">+/−</button>
+        <button class="key key-soft" data-action="percent" type="button">%</button>
+        <button class="key key-op" data-value="÷" type="button" aria-label="Divide">÷</button>
+
+        <button class="key" data-value="7" type="button">7</button>
+        <button class="key" data-value="8" type="button">8</button>
+        <button class="key" data-value="9" type="button">9</button>
+        <button class="key key-op" data-value="×" type="button" aria-label="Multiply">×</button>
+
+        <button class="key" data-value="4" type="button">4</button>
+        <button class="key" data-value="5" type="button">5</button>
+        <button class="key" data-value="6" type="button">6</button>
+        <button class="key key-op" data-value="−" type="button" aria-label="Subtract">−</button>
+
+        <button class="key" data-value="1" type="button">1</button>
+        <button class="key" data-value="2" type="button">2</button>
+        <button class="key" data-value="3" type="button">3</button>
+        <button class="key key-op" data-value="+" type="button" aria-label="Add">+</button>
+
+        <button class="key key-soft" data-action="delete" type="button" aria-label="Delete last character">⌫</button>
+        <button class="key" data-value="0" type="button">0</button>
+        <button class="key" data-value="." type="button">.</button>
+        <button class="key key-equals" data-action="equals" type="button" aria-label="Calculate">=</button>
+      </div>
+      <p class="keyboard-hint">TIP: YOU CAN ALSO USE YOUR KEYBOARD <kbd>ENTER</kbd> TO CALCULATE</p>
+    </section>
+
+    <aside class="history" id="historyPanel" hidden>
+      <div class="history-head"><h2>Recent calculations</h2><button id="clearHistory" class="text-btn" type="button">Clear history</button></div>
+      <ol id="historyList" class="history-list"><li class="history-empty">Your calculations will show up here.</li></ol>
+    </aside>
+
+    <footer class="footer">
+      <span>Made for curious minds.</span>
+      <a href="https://github.com/inzohaib/github-stats" target="_blank" rel="noreferrer">VIEW SOURCE ON GITHUB ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
